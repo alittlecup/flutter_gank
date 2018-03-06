@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
+import 'dart:convert';
 import 'gank_item_page.dart';
 import 'package:gank_app/model/gank_item.dart';
 class AndroidPage extends StatefulWidget{
@@ -15,6 +16,7 @@ class AndroidPageState extends State<AndroidPage>{
     void initState() {
       super.initState();
       items=gankItems;
+
     }
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,17 @@ class AndroidPageState extends State<AndroidPage>{
         return new GankItemView(items[index]);
       }
    );
+  }
+
+  void loadGank()async{
+    var httpClient=new HttpClient();
+    var uri = new Uri.http(
+      'example.com', '/path1/path2', {'param1': '42', 'param2': 'foo'});
+    // var request=await httpClient.getUrl(Uri.parse('http://gank.io/api/data/Android/10/1'));
+    var request=await httpClient.getUrl(uri);
+    var response=await request.close();
+    var responseBody = await response.transform(UTF8.decoder).join();
+    print(  responseBody);
   }
   
 }

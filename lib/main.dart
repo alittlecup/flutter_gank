@@ -3,7 +3,6 @@ import 'model/tab_model.dart';
 import 'page/android_page.dart';
 import 'page/web_page.dart';
 import 'page/ios_page.dart';
-import 'page/contact_page.dart';
 void main() {
   runApp(new MaterialApp(
     title: 'Gank-App',
@@ -45,7 +44,7 @@ class HomePageState extends State<HomePage>with SingleTickerProviderStateMixin{
         controller: _tabController,
         children: <Widget>[
           new AndroidPage(),
-          new ContactsDemo(),
+          new iOSPage(),
           new WebPage()
         ],
       ),
